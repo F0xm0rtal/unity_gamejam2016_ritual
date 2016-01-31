@@ -47,8 +47,22 @@ public class Circle : MonoBehaviour {
                     fail += System.Math.Abs(t0 - t1);
                 }
             }
-            
-            if(fail >= 100)
+
+            float r, v, b;
+
+            if (culte[0] + culte[1] + culte[2] != 0)
+            {
+                r = (culte[0] == 0) ? 0 : 1.0f - ((float)culte[0] / 300.0f);
+                v = (culte[1] == 0) ? 0 : 1.0f - ((float)culte[1] / 300.0f);
+                b = (culte[2] == 0) ? 0 : 1.0f - ((float)culte[2] / 300.0f);
+            }
+            else
+                r = b = v = 1.0f;
+
+
+            GetComponent<SpriteRenderer>().color = new Color(r, v, b, 1.0f - ((float)fail / 100.0f));
+
+            if (fail >= 100)
             {
                 GameOver();
             }
