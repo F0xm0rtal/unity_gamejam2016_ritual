@@ -7,7 +7,8 @@ public class FurnitureLayerManager : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+            SpriteRenderer sub = GetComponentInChildren<SpriteRenderer>();
+            other.GetComponent<SpriteRenderer>().sortingOrder = sub.sortingOrder - 2;
         }
     }
 
@@ -15,7 +16,7 @@ public class FurnitureLayerManager : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<SpriteRenderer>().sortingOrder += 1;
+            other.GetComponent<SpriteRenderer>().sortingOrder = 9;
         }
     }
 }

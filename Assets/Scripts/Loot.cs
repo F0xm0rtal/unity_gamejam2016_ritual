@@ -26,6 +26,4 @@ public class Loot : MonoBehaviour {
         if (other.CompareTag("Player"))
             lootable = false;
     }
-
-
 }

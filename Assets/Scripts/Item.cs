@@ -46,7 +46,7 @@ public class Item : MonoBehaviour
         }
         else if (holding)
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 4;
+            GetComponent<SpriteRenderer>().sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder + 1;
             if (player.GetComponent<SpriteRenderer>().flipX)
                 transform.localPosition = new Vector3(-itemOffset, itemHeight, 0.0f);
             else

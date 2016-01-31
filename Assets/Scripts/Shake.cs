@@ -21,6 +21,7 @@ public class Shake : MonoBehaviour {
         shaking = true;
         t = 0;
         tStart = Time.time;
+        Debug.LogWarning("Suis-je ici ?????? BIIIIIIIAAAAATCH");
     }
 
     void Update()
