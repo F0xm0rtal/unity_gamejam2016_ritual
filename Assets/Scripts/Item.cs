@@ -1,52 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour {
+public class Item : MonoBehaviour
+{
+    public int cult, power;
+
+    public float itemOffset, itemHeight;
+
+    private bool pickable = false;
+    private bool holding = false;
+    private bool onCircle = false;
 
     static private Transform canvas;
-    public int culte, power;
-    public bool ok = false;
-    public bool attached = false;
-    public bool onCircle = false;
-    private GameObject perso;
+    private GameObject player;
     private GameObject circle;
 
 	// Use this for initialization
 	void Start () {
         canvas = transform.parent;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if(ok && Input.GetButtonDown("Fire1"))
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (pickable && !holding && Input.GetButtonDown("Fire1"))
         {
-            //transform.parent = perso.transform;
-            transform.position = perso.transform.position;
-            attached = true;
-            ok = false;
-            //perso.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
-            //perso.GetComponent<DistanceJoint2D>().distance = 0;
+            transform.SetParent(player.transform, false);
+            holding = true;
+            pickable = false;
+            //player.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
+            //player.GetComponent<DistanceJoint2D>().distance = 0;
         }
-        else if(attached && Input.GetButtonDown("Fire1"))
+        else if (holding && Input.GetButtonDown("Fire1"))
         {
+            transform.position += new Vector3(0, -itemHeight, 0);
             if (onCircle)
                 transform.parent = circle.transform;
             else
                 transform.parent = canvas;
-            attached = false;
-            //perso.GetComponent<DistanceJoint2D>().connectedBody = null;
-        }
-        else if (attached)
-            transform.position = perso.transform.position;
+            transform.localScale = new Vector3(1, 1, 1);
 
+            holding = false;
+            //player.GetComponent<DistanceJoint2D>().connectedBody = null;
+        }
+        else if (holding)
+        {
+            if (player.GetComponent<SpriteRenderer>().flipX)
+                transform.localPosition = new Vector3(-itemOffset, itemHeight, 0.0f);
+            else
+                transform.localPosition = new Vector3(itemOffset, itemHeight, 0.0f);
+        }
+            
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            ok = true;
-            perso = other.gameObject;
+            pickable = true;
+            player = other.gameObject;
         }
         if (other.gameObject.tag == "Circle")
         {
@@ -58,7 +70,7 @@ public class Item : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
-            ok = false;
+            pickable = false;
         if (other.gameObject.tag == "Circle")
             onCircle = false;
     }
