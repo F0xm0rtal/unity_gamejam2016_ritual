@@ -56,10 +56,20 @@ public class RandObject : MonoBehaviour {
         prefabList.Add(Prefab22);
         prefabList.Add(Prefab23);
         prefabList.Add(Prefab24);
-        
-        int prefabIndex = UnityEngine.Random.Range(0, 24);
-        Instantiate(prefabList[prefabIndex]);
 
+
+        int prefabIndex = UnityEngine.Random.Range(0, 24);
+        Instantiate(prefabList[prefabIndex], new Vector3(2.0f, 0, 0), Quaternion.identity);
+        /*
+        int prefabIndex = UnityEngine.Random.Range(0, 24);
+        Instantiate(prefabList[prefabIndex], new Vector3(2.0f, 0, 0), Quaternion.identity);
+
+        int prefabIndex = UnityEngine.Random.Range(0, 24);
+        Instantiate(prefabList[prefabIndex], new Vector3(2.0f, 0, 0), Quaternion.identity);
+
+        int prefabIndex = UnityEngine.Random.Range(0, 24);
+        Instantiate(prefabList[prefabIndex], new Vector3(2.0f, 0, 0), Quaternion.identity);
+        */
     }
 
     void Update () {
