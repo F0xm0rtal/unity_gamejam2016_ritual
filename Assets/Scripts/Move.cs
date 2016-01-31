@@ -4,6 +4,7 @@ using System.Collections;
 public class Move : MonoBehaviour
 {
     public float maxSpeed = 1f;
+    public DistanceJoint2D join;
 
     void Start()
     {
