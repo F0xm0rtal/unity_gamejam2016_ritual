@@ -3,8 +3,13 @@ using System.Collections;
 
 public class Move : MonoBehaviour
 {
+<<<<<<< HEAD:Assets/Move.cs
     public float speed = 1.0f;
     public float scaleFactor = 1.0f;
+=======
+    public float maxSpeed = 1f;
+    public DistanceJoint2D join;
+>>>>>>> ef279c16f5401481e7ef746cd483700445b730a9:Assets/Scripts/Move.cs
 
     void Start()
     {
