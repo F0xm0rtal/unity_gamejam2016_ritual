@@ -59,6 +59,8 @@ public class Circle : MonoBehaviour {
             else
                 r = b = v = 1.0f;
 
+            AudioManager audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>(); // two lines for trigger the music
+            audio.TriggerCheck();
 
             GetComponent<SpriteRenderer>().color = new Color(r, v, b, 1.0f - ((float)fail / 100.0f));
 

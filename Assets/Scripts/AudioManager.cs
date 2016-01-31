@@ -9,9 +9,16 @@ public class AudioManager : MonoBehaviour
     public int stepValue4;
     public int stepValue5;
 
-    private AudioSource[] aSources;
+    public AudioClip music1;
+    public AudioClip music2;
+    public AudioClip music3;
+    public AudioClip music4;
+    public AudioClip music5;
+
+    private AudioSource audioOutput;
     private bool checking;
-    private  int currentStep;
+    private int currentStep;
+    private int lastStep;
 
     public void TriggerCheck()
     {
@@ -20,46 +27,34 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        aSources = GetComponents<AudioSource>();
+        currentStep = 0;
+        audioOutput = GetComponent<AudioSource>();
+        audioOutput.PlayOneShot(music1);
     }
 
     void Update()
     {
-        Circle circle = GameObject.FindGameObjectWithTag("Circle").GetComponent<Circle>();
-
-        if (circle.fail  < stepValue1)
+        if (checking)
         {
-            aSources[0].Play();
+            Circle circle = GameObject.FindGameObjectWithTag("Circle").GetComponent<Circle>();
+
+            lastStep = currentStep;
+            if (stepValue1 <= circle.fail && circle.fail < stepValue2) { currentStep = 1; }
+            if (stepValue2 <= circle.fail && circle.fail < stepValue3) { currentStep = 2; }
+            if (stepValue3 <= circle.fail && circle.fail < stepValue4) { currentStep = 3; }
+            if (stepValue4 <= circle.fail && circle.fail < stepValue5) { currentStep = 4; }
+
+            if (currentStep != lastStep)
+            {
+                audioOutput.Stop();
+                if (currentStep == 1) { audioOutput.PlayOneShot(music2); }
+                if (currentStep == 2) { audioOutput.PlayOneShot(music3); }
+                if (currentStep == 3) { audioOutput.PlayOneShot(music4); }
+                if (currentStep == 4) { audioOutput.PlayOneShot(music5); }
+            }
+
+            checking = false;
         }
 
-        if (stepValue1 <= circle.fail && circle.fail < stepValue2)
-        {
-            if (aSources[0].isPlaying) { aSources[0].Stop(); }
-            aSources[1].Play();
-        }
-
-        if (stepValue2 <= circle.fail && circle.fail < stepValue3)
-        {
-            if (aSources[0].isPlaying) { aSources[0].Stop(); }
-            if (aSources[1].isPlaying) { aSources[1].Stop(); }
-            aSources[2].Play();
-        }
-
-        if (stepValue3 <= circle.fail && circle.fail < stepValue4)
-        {
-            if (aSources[0].isPlaying) { aSources[0].Stop(); }
-            if (aSources[1].isPlaying) { aSources[1].Stop(); }
-            if (aSources[2].isPlaying) { aSources[2].Stop(); }
-            aSources[3].Play();
-        }
-
-        if (stepValue4 <= circle.fail && circle.fail < stepValue5)
-        {
-            if (aSources[0].isPlaying) { aSources[0].Stop(); }
-            if (aSources[1].isPlaying) { aSources[1].Stop(); }
-            if (aSources[2].isPlaying) { aSources[2].Stop(); }
-            if (aSources[3].isPlaying) { aSources[3].Stop(); }
-            aSources[4].Play();
-        }
     }
 }
