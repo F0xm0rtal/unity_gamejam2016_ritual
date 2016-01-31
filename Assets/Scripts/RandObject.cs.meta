@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 34f4beae90da52c42a793e762e42a654
+timeCreated: 1454230255
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Prefab1: {fileID: 115382, guid: 640dac9cc8afa3143825af6ce0b77c8f, type: 2}
+  - Prefab2: {fileID: 144538, guid: 46bd9fe5f29d1464cb756ddcb993e690, type: 2}
+  - Prefab3: {fileID: 158288, guid: a0ff9d8e08a94d44f8a00c8037a06844, type: 2}
+  - Prefab4: {fileID: 124280, guid: 3cf3faee917bffa44be18e8960e92fb4, type: 2}
+  - Prefab5: {fileID: 166906, guid: 0c50344aebb59bf478d7fe9806f0d6c8, type: 2}
+  - Prefab6: {fileID: 190592, guid: 8288561eec7773a48ae57a8bc72a0c74, type: 2}
+  - Prefab7: {fileID: 194668, guid: 6120bcb1bfdf4494c8d807c0bfce6329, type: 2}
+  - Prefab8: {fileID: 108134, guid: 926c41a272763394c832b77a2f9cbbd2, type: 2}
+  - Prefab9: {fileID: 102654, guid: 64b6160718cd6c6498abcaddc45d8f89, type: 2}
+  - Prefab10: {fileID: 172502, guid: e55ffa0c9e18366478a8e35aa9b03588, type: 2}
+  - Prefab11: {fileID: 193196, guid: 2ab0f6084e4cae64c85722b3c8903d98, type: 2}
+  - Prefab12: {fileID: 116346, guid: b575197fbe4b85c409cae343dd4f159e, type: 2}
+  - Prefab13: {fileID: 110302, guid: 570af598fa80e274ab5734f89d9c89a7, type: 2}
+  - Prefab14: {fileID: 139324, guid: 04f64baca7ac05b44a2b5c4ab8f1d9b5, type: 2}
+  - Prefab15: {fileID: 146106, guid: 9099505a3f0ef444daf95e66dd7285a0, type: 2}
+  - Prefab16: {fileID: 112098, guid: e785224399339294cb08edc187eec1ce, type: 2}
+  - Prefab17: {fileID: 156434, guid: 30e8736250294964cba989502ef8f3e1, type: 2}
+  - Prefab18: {fileID: 157470, guid: 235089aaa3e9e9f46ac1039f9a56734b, type: 2}
+  - Prefab19: {fileID: 171904, guid: 34a40614f8000c34c8e0fd47eb2f67e8, type: 2}
+  - Prefab20: {fileID: 182192, guid: 2c9d59733c41dc844a837c3d1e02d41b, type: 2}
+  - Prefab21: {fileID: 108030, guid: 1022fdd143045df478655dc2550b4d4b, type: 2}
+  - Prefab22: {fileID: 117090, guid: fa3b14cc0eabe5c47985accb157f26e0, type: 2}
+  - Prefab23: {fileID: 182512, guid: e3b2d39fa1c21504da0ec96ce26d5405, type: 2}
+  - Prefab24: {fileID: 122024, guid: a95b590a98ed1e549b2396ea18d7917d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
