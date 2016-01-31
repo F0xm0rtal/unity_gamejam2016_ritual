@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FurnitureLayerManager : MonoBehaviour {
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -11,7 +11,7 @@ public class FurnitureLayerManager : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {

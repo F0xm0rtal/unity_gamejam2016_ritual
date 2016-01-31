@@ -11,7 +11,7 @@ public class Book : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Fire3") && ok)
+        if (Input.GetButtonDown("Fire3") && ok)
             Circle.book = this.culte;
 
         if (Circle.book == this.culte)
