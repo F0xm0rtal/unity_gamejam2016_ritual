@@ -7,7 +7,9 @@ public class Item : MonoBehaviour {
     public int culte, power;
     public bool ok = false;
     public bool attached = false;
+    public bool onCircle = false;
     private GameObject perso;
+    private GameObject circle;
 
 	// Use this for initialization
 	void Start () {
@@ -18,20 +20,26 @@ public class Item : MonoBehaviour {
 	void Update () {
 	    if(ok && Input.GetButtonDown("Fire1"))
         {
-            //transform.parent = pickedUpObject.transform;
-            //transform.position = pickedUpObject.transform.position - pickedUpObject.transform.forward;
+            transform.parent = perso.transform;
+            transform.position = perso.transform.position;
             attached = true;
-            perso.GetComponent<Move>().join = new DistanceJoint2D();
-            perso.GetComponent<Move>().join.connectedBody = GetComponent<Rigidbody2D>();
-            perso.GetComponent<Move>().join.distance = 0;
+            ok = false;
+            //perso.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
+            //perso.GetComponent<DistanceJoint2D>().distance = 0;
         }
         else if(attached && Input.GetButtonDown("Fire1"))
         {
-            //transform.parent = canvas;
+            if (onCircle)
+                transform.parent = circle.transform;
+            else
+                transform.parent = canvas;
             attached = false;
-            perso.GetComponent<Move>().join = null;
+            //perso.GetComponent<DistanceJoint2D>().connectedBody = null;
         }
-	}
+        else if (attached)
+            transform.position = perso.transform.position;
+
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,14 +48,18 @@ public class Item : MonoBehaviour {
             ok = true;
             perso = other.gameObject;
         }
+        if (other.gameObject.tag == "Circle")
+        {
+            onCircle = true;
+            circle = other.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
-        {
             ok = false;
-            perso = null;
-        }
+        if (other.gameObject.tag == "Circle")
+            onCircle = false;
     }
 }

@@ -5,8 +5,6 @@ using System.Collections;
 
 public class Circle : MonoBehaviour {
     public bool ritualReady = false;
-    public GameObject[] items = new GameObject[2];
-    public int collidedWith = 0;
     public int fail;
     public int[] culte = new int[3] { 0, 0, 0 };
 
@@ -19,11 +17,11 @@ public class Circle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetButtonDown("Jump") && ritualReady)
+        if(Input.GetButtonDown("Jump") && transform.childCount == 2)
         {
             transform.Rotate(Vector3.right);
-            Item i1 = items[0].GetComponent<Item>();
-            Item i2 = items[1].GetComponent<Item>();
+            Item i1 = transform.GetChild(0).gameObject.GetComponent<Item>();
+            Item i2 = transform.GetChild(1).gameObject.GetComponent<Item>();
 
             if (book != i1.culte && book != i2.culte)
             {
@@ -75,7 +73,7 @@ public class Circle : MonoBehaviour {
 
     void Win(int culte)
     { }
-
+    /*
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Item")
         {
@@ -94,5 +92,5 @@ public class Circle : MonoBehaviour {
 
             ritualReady = (collidedWith == 2) ? true : false;
         }
-    }
+    }*/
 }
