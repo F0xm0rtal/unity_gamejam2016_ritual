@@ -61,6 +61,7 @@ public class Item : MonoBehaviour
         {
             pickable = true;
             player = other.gameObject;
+            player.transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
         if (other.gameObject.tag == "Circle")
         {
@@ -72,8 +73,11 @@ public class Item : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
+        {
             pickable = false;
-        if (other.gameObject.tag == "Circle")
+            player.transform.GetChild(0).GetComponent<Renderer>().enabled = false;
+        }
+       if (other.gameObject.tag == "Circle")
             onCircle = false;
     }
 }

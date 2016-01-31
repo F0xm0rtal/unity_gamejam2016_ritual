@@ -15,17 +15,17 @@ public class Book : MonoBehaviour {
             Circle.book = this.culte;
 
         if (Circle.book == this.culte)
-        {
-            //appel Highlight
-            this.transform.Rotate(Vector3.right);
-        }
-	}
+            transform.GetChild(1).GetComponent<Renderer>().enabled = true;
+        else
+            transform.GetChild(1).GetComponent<Renderer>().enabled = false;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && Circle.book != this.culte)
         {
             ok = true;
+            transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
     }
 
@@ -34,6 +34,7 @@ public class Book : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             ok = false;
+            transform.GetChild(0).GetComponent<Renderer>().enabled = false;
         }
     }
 }

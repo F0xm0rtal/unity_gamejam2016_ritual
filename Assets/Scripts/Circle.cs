@@ -54,15 +54,19 @@ public class Circle : MonoBehaviour {
 
         for (int i = 0; i < number; i++)
         {
-            items++;
             inGame.Add(Instantiate((GameObject)itemList[rand.Next(0, 23)]));
-            ((GameObject)inGame[items - 1]).transform.position = positions[rand.Next(0, 1)];
+            ((GameObject)inGame[items]).transform.position = positions[rand.Next(0, 1)];
+            items++;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetButtonDown("Jump") && transform.childCount == 2)
+        if (transform.childCount == 3)
+            transform.GetChild(0).GetComponent<Renderer>().enabled = true;
+        else
+            transform.GetChild(0).GetComponent<Renderer>().enabled = false;
+        if (Input.GetButtonDown("Jump") && transform.childCount == 3)
         {
             transform.Rotate(Vector3.right);
             Item i1 = transform.GetChild(0).gameObject.GetComponent<Item>();
