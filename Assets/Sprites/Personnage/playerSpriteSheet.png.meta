@@ -1,17 +1,18 @@
 fileFormatVersion: 2
 guid: 60816e023254e1a4690cacd7db0612c4
-timeCreated: 1454219431
+timeCreated: 1454243849
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spritesheetdev3_0
-    21300002: spritesheetdev3_1
-    21300004: spritesheetdev3_2
-    21300006: spritesheetdev3_3
-    21300008: spritesheetdev3_4
-    21300010: spritesheetdev3_5
-    21300012: spritesheetdev3_6
-    21300014: spritesheetdev3_7
+    21300000: playerSpriteSheet
+    21300002: playerSpriteSheet_1
+    21300004: playerSpriteSheet_2
+    21300006: playerSpriteSheet_3
+    21300008: playerSpriteSheet_4
+    21300010: playerSpriteSheet_5
+    21300012: playerSpriteSheet_6
+    21300014: playerSpriteSheet_7
+    21300016: playerSpriteSheet_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: spritesheetdev3_0
+    - name: playerSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 12
@@ -93,7 +94,7 @@ TextureImporter:
         - {x: 64, y: 22}
         - {x: 92, y: 50}
         - {x: 92, y: 85}
-    - name: spritesheetdev3_1
+    - name: playerSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 209
@@ -126,7 +127,7 @@ TextureImporter:
         - {x: -2.5, y: 4}
         - {x: 60.5, y: 29}
         - {x: 82.5, y: 73}
-    - name: spritesheetdev3_2
+    - name: playerSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 407
@@ -170,7 +171,7 @@ TextureImporter:
         - {x: -104, y: 425}
         - {x: -107, y: 425}
         - {x: -107, y: 421}
-    - name: spritesheetdev3_3
+    - name: playerSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 699
@@ -207,7 +208,7 @@ TextureImporter:
         - {x: 71.5, y: 14}
         - {x: 114.5, y: 58}
         - {x: 101.5, y: 92}
-    - name: spritesheetdev3_4
+    - name: playerSpriteSheet_4
       rect:
         serializedVersion: 2
         x: 1046
@@ -240,7 +241,7 @@ TextureImporter:
         - {x: 44.5, y: 17}
         - {x: 77.5, y: 61}
         - {x: 53.5, y: 112}
-    - name: spritesheetdev3_5
+    - name: playerSpriteSheet_5
       rect:
         serializedVersion: 2
         x: 1279
@@ -278,7 +279,7 @@ TextureImporter:
         - {x: -103.5, y: 122}
         - {x: -103.5, y: 124}
         - {x: -105.5, y: 126}
-    - name: spritesheetdev3_6
+    - name: playerSpriteSheet_6
       rect:
         serializedVersion: 2
         x: 1545
@@ -313,7 +314,7 @@ TextureImporter:
         - {x: 98, y: 19}
         - {x: 104, y: 31}
         - {x: 104, y: 68}
-    - name: spritesheetdev3_7
+    - name: playerSpriteSheet_7
       rect:
         serializedVersion: 2
         x: 1782
