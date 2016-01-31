@@ -33,6 +33,7 @@ public class Item : MonoBehaviour
         }
         else if (holding && Input.GetButtonDown("Fire1"))
         {
+            GetComponent<SpriteRenderer>().sortingOrder = 2;
             transform.position += new Vector3(0, -itemHeight, 0);
             if (onCircle)
                 transform.parent = circle.transform;
@@ -45,6 +46,7 @@ public class Item : MonoBehaviour
         }
         else if (holding)
         {
+            GetComponent<SpriteRenderer>().sortingOrder = 4;
             if (player.GetComponent<SpriteRenderer>().flipX)
                 transform.localPosition = new Vector3(-itemOffset, itemHeight, 0.0f);
             else
