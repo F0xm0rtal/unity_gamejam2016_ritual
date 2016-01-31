@@ -20,7 +20,7 @@ public class Item : MonoBehaviour {
 	void Update () {
 	    if(ok && Input.GetButtonDown("Fire1"))
         {
-            transform.parent = perso.transform;
+            //transform.parent = perso.transform;
             transform.position = perso.transform.position;
             attached = true;
             ok = false;

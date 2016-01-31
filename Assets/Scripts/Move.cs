@@ -16,7 +16,7 @@ public class Move : MonoBehaviour
         transform.localScale = new Vector3(1 + transform.position.y * -scaleFactor, 1 + transform.position.y * -scaleFactor, 0.0f);
     }
 
-	void FixedUpdate ()
+    void FixedUpdate ()
     {
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
@@ -33,7 +33,7 @@ public class Move : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        if (GetComponent<Rigidbody2D>().IsAwake())
+        if (GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.1)
         {
             GetComponent<Animator>().SetBool("Walk", true);
         }
