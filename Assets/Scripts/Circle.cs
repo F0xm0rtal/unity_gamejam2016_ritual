@@ -64,16 +64,16 @@ public class Circle : MonoBehaviour {
 
             if (fail >= 100)
             {
-                GameOver();
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");//GameOver();
             }
             else if(culte[0] + culte[1] + culte[2] >= 300)
             {
                 if (culte[0] > culte[1] && culte[0] > culte[2])
-                    Win(0);
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("End1");//Win(0);
                 else if (culte[1] > culte[0] && culte[1] > culte[2])
-                    Win(1);
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("End2");//Win(1);
                 else
-                    Win(2);
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("End3");//Win(2);
             }
             else
             {
