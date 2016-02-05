@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-
-public class Circle : MonoBehaviour {
+public class Circle : MonoBehaviour
+{
     public bool ritualReady = false;
     public int fail;
     public int items = 0;
     public int[] cult = new int[3] { 0, 0, 0 };
+
+    public GameObject<>() spawnableItems;
 
     public ArrayList inGame = new ArrayList();
     public ArrayList itemList = new ArrayList();
@@ -46,26 +47,13 @@ public class Circle : MonoBehaviour {
         Spawn();
 
 	}
-
-    void Spawn()
-    {
-        System.Random rand = new System.Random();
-        int number = rand.Next(3, 6);
-
-        for (int i = 0; i < number; i++)
-        {
-            inGame.Add(Instantiate((GameObject)itemList[rand.Next(0, 23)]));
-            ((GameObject)inGame[items]).transform.position = positions[rand.Next(0, 1)];
-            items++;
-        }
-    }
 	
-	// Update is called once per frame
-	void Update () {
-        if (transform.childCount == 3)
-            transform.GetChild(0).GetComponent<Renderer>().enabled = true;
-        else
-            transform.GetChild(0).GetComponent<Renderer>().enabled = false;
+	void Update ()
+    {
+        //if (transform.childCount == 3)
+        //    transform.GetChild(0).GetComponent<Renderer>().enabled = true;
+        //else
+        //    transform.GetChild(0).GetComponent<Renderer>().enabled = false;
         if (Input.GetButtonDown("Jump") && transform.childCount == 3)
         {
             transform.Rotate(Vector3.right);
@@ -136,6 +124,19 @@ public class Circle : MonoBehaviour {
             }
         }
 	}
+
+    void Spawn()
+    {
+        System.Random rand = new System.Random();
+        int number = rand.Next(3, 6);
+
+        for (int i = 0; i < number; i++)
+        {
+            inGame.Add(Instantiate((GameObject)itemList[rand.Next(0, 23)]));
+            ((GameObject)inGame[items]).transform.position = positions[rand.Next(0, 1)];
+            items++;
+        }
+    }
 
     void GameOver()
     { }

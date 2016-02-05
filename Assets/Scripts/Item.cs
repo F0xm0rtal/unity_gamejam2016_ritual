@@ -31,6 +31,7 @@ public class Item : MonoBehaviour
             //player.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
             //player.GetComponent<DistanceJoint2D>().distance = 0;
         }
+
         else if (holding && Input.GetButtonDown("Fire1"))
         {
             GetComponent<SpriteRenderer>().sortingOrder = 2;
@@ -44,7 +45,8 @@ public class Item : MonoBehaviour
             holding = false;
             //player.GetComponent<DistanceJoint2D>().connectedBody = null;
         }
-        else if (holding)
+
+        if (holding)
         {
             GetComponent<SpriteRenderer>().sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder + 1;
             if (player.GetComponent<SpriteRenderer>().flipX)
@@ -61,7 +63,6 @@ public class Item : MonoBehaviour
         {
             pickable = true;
             player = other.gameObject;
-            player.transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
         if (other.gameObject.tag == "Circle")
         {
@@ -75,7 +76,6 @@ public class Item : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             pickable = false;
-            player.transform.GetChild(0).GetComponent<Renderer>().enabled = false;
         }
        if (other.gameObject.tag == "Circle")
             onCircle = false;

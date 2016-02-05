@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Book : MonoBehaviour {
+public class Book : MonoBehaviour
+{
     public int culte;
-    public bool ok = false;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetButtonDown("Fire3") && ok)
+    public bool activable = false;
+
+   void Start () {
+
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire3") && activable)
             Circle.book = this.culte;
 
         if (Circle.book == this.culte)
@@ -24,7 +25,7 @@ public class Book : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && Circle.book != this.culte)
         {
-            ok = true;
+            activable = true;
             transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
     }
@@ -33,7 +34,7 @@ public class Book : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            ok = false;
+            activable = false;
             transform.GetChild(0).GetComponent<Renderer>().enabled = false;
         }
     }
