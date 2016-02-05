@@ -6,18 +6,67 @@ using System.Collections;
 public class Circle : MonoBehaviour {
     public bool ritualReady = false;
     public int fail;
+    public int items = 0;
     public int[] cult = new int[3] { 0, 0, 0 };
+
+    public ArrayList inGame = new ArrayList();
+    public ArrayList itemList = new ArrayList();
+    public Vector3[] positions = { new Vector3(1, 2, 3), new Vector3( 1, 5, 0) }; //Add all the positions
 
     static public int book = 0;
 
     // Use this for initialization
     void Start () {
-	    //Alea-Spawn
+
+        itemList.Add((GameObject)Resources.Load("Cat"));
+        itemList.Add((GameObject)Resources.Load("Chose Informe"));
+        itemList.Add((GameObject)Resources.Load("Citron Vert"));
+        itemList.Add((GameObject)Resources.Load("Clous"));
+        itemList.Add((GameObject)Resources.Load("Corbeau"));
+        itemList.Add((GameObject)Resources.Load("Coussin Chaos"));
+        itemList.Add((GameObject)Resources.Load("Coussin Cthulu"));
+        itemList.Add((GameObject)Resources.Load("Coussin Etoile"));
+        itemList.Add((GameObject)Resources.Load("Crane Bleu"));
+        itemList.Add((GameObject)Resources.Load("Crane Rouge"));
+        itemList.Add((GameObject)Resources.Load("Crane Vert"));
+        itemList.Add((GameObject)Resources.Load("Cristal Bleu"));
+        itemList.Add((GameObject)Resources.Load("Cristal Rouge"));
+        itemList.Add((GameObject)Resources.Load("Cristal Vert"));
+        itemList.Add((GameObject)Resources.Load("Idole Chaos"));
+        itemList.Add((GameObject)Resources.Load("Idole Cthulu"));
+        itemList.Add((GameObject)Resources.Load("Idole Satan"));
+        itemList.Add((GameObject)Resources.Load("Nyarly"));
+        itemList.Add((GameObject)Resources.Load("Peluche Zeentch"));
+        itemList.Add((GameObject)Resources.Load("Poisson"));
+        itemList.Add((GameObject)Resources.Load("Poupee"));
+        itemList.Add((GameObject)Resources.Load("Sel"));
+        itemList.Add((GameObject)Resources.Load("Tentacle Plastic"));
+        itemList.Add((GameObject)Resources.Load("Truc Serpent"));
+        //Alea-Spawn
+        Spawn();
+
 	}
+
+    void Spawn()
+    {
+        System.Random rand = new System.Random();
+        int number = rand.Next(3, 6);
+
+        for (int i = 0; i < number; i++)
+        {
+            inGame.Add(Instantiate((GameObject)itemList[rand.Next(0, 23)]));
+            ((GameObject)inGame[items]).transform.position = positions[rand.Next(0, 1)];
+            items++;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetButtonDown("Jump") && transform.childCount == 2)
+        if (transform.childCount == 3)
+            transform.GetChild(0).GetComponent<Renderer>().enabled = true;
+        else
+            transform.GetChild(0).GetComponent<Renderer>().enabled = false;
+        if (Input.GetButtonDown("Jump") && transform.childCount == 3)
         {
             transform.Rotate(Vector3.right);
             Item i1 = transform.GetChild(0).gameObject.GetComponent<Item>();
@@ -47,6 +96,10 @@ public class Circle : MonoBehaviour {
                     fail += System.Math.Abs(t0 - t1);
                 }
             }
+
+            inGame.Remove(i1);
+            inGame.Remove(i2);
+            items -= 2;
 
             float r, v, b;
 
@@ -79,7 +132,7 @@ public class Circle : MonoBehaviour {
             }
             else
             {
-                Start();
+                Spawn();
             }
         }
 	}
@@ -89,24 +142,4 @@ public class Circle : MonoBehaviour {
 
     void Win(int cult)
     { }
-    /*
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Item")
-        {
-            items[collidedWith] = other.gameObject;
-            collidedWith++;
-
-            ritualReady = (collidedWith == 2) ? true : false;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Item")
-        {
-            collidedWith--;
-            items[collidedWith] = null;
-
-            ritualReady = (collidedWith == 2) ? true : false;
-        }
-    }*/
 }
