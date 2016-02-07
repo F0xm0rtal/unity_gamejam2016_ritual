@@ -5,7 +5,7 @@ public class Loot : MonoBehaviour {
 
     public int spawnedItemId;
 
-    private bool lootable = false;
+    private bool lootable;
 
     void Update()
     {

@@ -36,13 +36,13 @@ public class AudioManager : MonoBehaviour
     {
         if (checking)
         {
-            Circle circle = GameObject.FindGameObjectWithTag("Circle").GetComponent<Circle>();
+            Ritual ritual = GameObject.FindGameObjectWithTag("Circle").GetComponent<Ritual>();
 
             lastStep = currentStep;
-            if (stepValue1 <= circle.fail && circle.fail < stepValue2) { currentStep = 1; }
-            if (stepValue2 <= circle.fail && circle.fail < stepValue3) { currentStep = 2; }
-            if (stepValue3 <= circle.fail && circle.fail < stepValue4) { currentStep = 3; }
-            if (stepValue4 <= circle.fail && circle.fail < stepValue5) { currentStep = 4; }
+            if (stepValue1 <= ritual.score.fail && ritual.score.fail < stepValue2) { currentStep = 1; }
+            if (stepValue2 <= ritual.score.fail && ritual.score.fail < stepValue3) { currentStep = 2; }
+            if (stepValue3 <= ritual.score.fail && ritual.score.fail < stepValue4) { currentStep = 3; }
+            if (stepValue4 <= ritual.score.fail && ritual.score.fail < stepValue5) { currentStep = 4; }
 
             if (currentStep != lastStep)
             {

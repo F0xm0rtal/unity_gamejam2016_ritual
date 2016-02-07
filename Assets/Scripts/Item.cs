@@ -1,26 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class RelativePosition
+{
+    public float X, Y;
+}
+
 public class Item : MonoBehaviour
 {
-    public int cult, power;
+    public int power;
+    public Cults cult;
+    public RelativePosition relativePosition;
 
-    public float itemOffset, itemHeight;
+    private bool pickable;
+    private bool holding;
+    private bool onCircle;
 
-    private bool pickable = false;
-    private bool holding = false;
-    private bool onCircle = false;
-
-    static private Transform canvas;
     private GameObject player;
     private GameObject circle;
+    private GameObject itemsGroup;
 
-	// Use this for initialization
-	void Start () {
-        canvas = transform.parent;
-	}
+    void Start()
+    {
+        itemsGroup = transform.parent.gameObject;
+    }
 
-    // Update is called once per frame
     void Update()
     {
         if (pickable && !holding && Input.GetButtonDown("Fire1"))
@@ -28,31 +33,28 @@ public class Item : MonoBehaviour
             transform.SetParent(player.transform, false);
             holding = true;
             pickable = false;
-            //player.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
-            //player.GetComponent<DistanceJoint2D>().distance = 0;
         }
 
         else if (holding && Input.GetButtonDown("Fire1"))
         {
             GetComponent<SpriteRenderer>().sortingOrder = 2;
-            transform.position += new Vector3(0, -itemHeight, 0);
+            transform.position += new Vector3(0, -relativePosition.Y, 0);
             if (onCircle)
                 transform.parent = circle.transform;
             else
-                transform.parent = canvas;
+                transform.parent = itemsGroup.transform;
             transform.localScale = new Vector3(1, 1, 1);
 
             holding = false;
-            //player.GetComponent<DistanceJoint2D>().connectedBody = null;
         }
 
         if (holding)
         {
             GetComponent<SpriteRenderer>().sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder + 1;
             if (player.GetComponent<SpriteRenderer>().flipX)
-                transform.localPosition = new Vector3(-itemOffset, itemHeight, 0.0f);
+                transform.localPosition = new Vector3(-relativePosition.X, relativePosition.Y, 0.0f);
             else
-                transform.localPosition = new Vector3(itemOffset, itemHeight, 0.0f);
+                transform.localPosition = new Vector3(relativePosition.X, relativePosition.Y, 0.0f);
         }
             
     }

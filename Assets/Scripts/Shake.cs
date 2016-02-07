@@ -17,11 +17,14 @@ public class Shake : MonoBehaviour {
 
     public void StartShaking()
     {
-        startPosition = transform.position;
         shaking = true;
         t = 0;
         tStart = Time.time;
-        Debug.LogWarning("Suis-je ici ?????? BIIIIIIIAAAAATCH");
+    }
+
+    void Start()
+    {
+        startPosition = transform.position;
     }
 
     void Update()
@@ -29,21 +32,26 @@ public class Shake : MonoBehaviour {
         if (shaking)
         {
             t = Time.time - tStart;
+            float mX = magnitudeX;
+            float mY = magnitudeY;
+
+            transform.position = new Vector3(startPosition.x + (Mathf.Sin(Time.time * frequency) * mX), startPosition.y + (Mathf.Sin(Time.time * frequency) * mY), 0.0f);
+
             if (t < duration)
             {
-                transform.position = new Vector3(startPosition.x + (Mathf.Sin(Time.time * frequency) * magnitudeX), startPosition.y + (Mathf.Sin(Time.time * frequency) * magnitudeY), 0.0f);
-                magnitudeX = Mathf.MoveTowards(magnitudeX, 2 * magnitudeX, magnitudeX / 1000);
-                magnitudeY = Mathf.MoveTowards(magnitudeY, 2 * magnitudeY, magnitudeY / 1000);
+                mX = Mathf.MoveTowards(magnitudeX, 2 * magnitudeX, magnitudeX / 1000);
+                mY = Mathf.MoveTowards(magnitudeY, 2 * magnitudeY, magnitudeY / 1000);
             }
-            else
 
+            else
             {
-                magnitudeX = Mathf.MoveTowards(magnitudeX, 0.0f, magnitudeX / 10);
-                magnitudeY = Mathf.MoveTowards(magnitudeY, 0.0f, magnitudeY / 10);
+                mX = Mathf.MoveTowards(magnitudeX, 0.0f, magnitudeX / 10);
+                mY = Mathf.MoveTowards(magnitudeY, 0.0f, magnitudeY / 10);
+
                 if (Vector3.Distance(startPosition, transform.position) < positionDelta)
                 {
-                    shaking = false;
                     transform.position = startPosition;
+                    shaking = false;
                 }
             }          
         }
